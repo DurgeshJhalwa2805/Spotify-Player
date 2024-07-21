@@ -1,4 +1,3 @@
-import React from 'react';
 import SpotifyLogo from "../assets/images/Logo.png"
 import ProfileIcon from "../assets/images/Profile.png"
 

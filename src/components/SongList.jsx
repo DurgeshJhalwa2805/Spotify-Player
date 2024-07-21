@@ -1,34 +1,46 @@
-import React from 'react';
+import searchIcon from "../assets/icons/magnifierIcon.png"
+import useMusic from "../customHooks/useMusic";
 
 const SongList = () => {
-    const songs = [
-        { title: 'Starboy', artist: 'The Weeknd', duration: '4:16' },
-        { title: 'Demons', artist: 'Imagine Dragons', duration: '5:24' },
-    ];
+    const { displayList,currentSong,setCurrentSong, loading, error ,playStatus,play ,topTrackActive,toggleLists} = useMusic();
+
+    console.log(displayList,loading,error,"songs loading err")
+
+    const handleChangeSong =async (song)=>{
+        await setCurrentSong(song)
+        play()
+    }
 
     return (
-        <div className="p-4">
-            <div className="flex space-x-5 mb-4">
-                <h2 className="text-lg font-bold cursor-pointer hover:text-gray-300">For You</h2>
-                <h2 className="text-lg font-bold cursor-pointer text-gray-500 hover:text-gray-300">Top Tracks</h2>
-            </div>
-            <input
-                type="text"
-                placeholder="Search Song, Artist"
-                className="w-full p-2 mb-4 bg-[#35250a] text-white rounded"
-            />
-            <ul>
-                {songs.map((song, index) => (
-                    <li key={index} className="flex justify-between p-2 cursor-pointer hover:bg-[#35250a] rounded">
-                        <div>
-                            <p>{song.title}</p>
-                            <p className="text-sm text-gray-400">{song.artist}</p>
-                        </div>
-                        <p>{song.duration}</p>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <div className="p-4 w-[85%] flex flex-col h-screen">
+    <div className="flex space-x-5 mb-4">
+        <h2 className={`text-lg font-bold cursor-pointer  ${topTrackActive ? "opacity-60":" opacity-100"} hover:opacity-60 transition-all ease-in`} onClick={()=>toggleLists()}>For You</h2>
+        <h2 className={`text-lg font-bold cursor-pointer ${!topTrackActive ? "opacity-60":" opacity-100"} hover:opacity-100 transition-all ease-in`} onClick={()=>toggleLists()}>Top Tracks</h2>
+    </div>
+    <div className='flex items-center w-full p-2 mb-4 bg-[#201606] backdrop-blur-2xl brightness-125 text-white rounded'>
+        <input
+            type="text"
+            placeholder="Search Song, Artist"
+            className="flex-grow bg-transparent outline-none px-3  placeholder:text-sm"
+        />
+        <img src={searchIcon} alt="User Logo" className="w-4 h-4 bg-transparent" />
+    </div>
+    <ul className="flex-grow overflow-x-hidden overflow-y-auto " style={{ maxHeight: 'calc(100vh - 150px)' }}>
+        {displayList && displayList.length > 0 && displayList.map((song) => (
+            <li key={song.id} className={`flex justify-between items-center  text-sm p-2 cursor-pointer ${currentSong.id == song.id && "bg-[#201606] backdrop-blur-2xl brightness-125 "} hover:bg-[#201606] hover:backdrop-blur-2xl hover:brightness-150 rounded transition-all duration-200 ease-in-out `} onClick={() => handleChangeSong(song)}>
+                <div className="flex items-center">
+                    <img src={`https://cms.samespace.com/assets/${song.cover}`} alt={song.title} className={`w-10 h-10 mr-3 rounded-full ${currentSong.id == song.id && playStatus && "animate-slow-spin"}`} />
+                    <div className="pl-1">
+                        <p>{song.name}</p>
+                        <p className="text-xs opacity-60">{song.artist}</p>
+                    </div>
+                </div>
+                <p>{song.duration || "4:16"}</p>
+            </li>
+        ))}
+    </ul>
+</div>
+
     );
 };
 

@@ -15,7 +15,9 @@ export default {
       },
       boxShadow: {
         'custom-shadow': '0 4px 4px rgba(0, 0, 0, 0.50)',
-
+      },
+      animation: {
+        'slow-spin': 'spin 5s ease-in infinite',
       },
     },
   },
