@@ -24,12 +24,12 @@ const Player = () => {
         <div className="h-full max-h-screen custom-css w-full flex justify-center items-start pt-[4vh] md:justify-start md:items-center md:pt-0  2xl:items-start 2xl:pt-[13vh] md:pl-28 2xl:pl-52">
             <audio ref={audioRef} src={currentSong.url} preload="auto">
             </audio>
-            <div className="flex flex-col text-white p-4 rounded-lg w-[280px] 2xl:w-[325px]">
+            <div className="flex flex-col text-white p-4 rounded-lg  min-w-[280px] w-[90%] max-w-[310px] 2xl:w-[325px]">
                 <div className="text-left mb-4">
                     <p className="text-xl 2xl:text-2xl font-semibold">{currentSong.name}</p>
                     <p className="opacity-60 text-xs 2xl:text-sm">{currentSong.artist}</p>
                 </div>
-                <div className="vignette-container h-[250px] 2xl:h-[300px] w-full mb-4 rounded-md overflow-hidden">
+                <div className="vignette-container h-[250px]  2xl:h-[300px] w-full mb-4 rounded-md overflow-hidden">
                     <img
                         src={`https://cms.samespace.com/assets/${currentSong.cover}`}
                         alt={currentSong.name}
