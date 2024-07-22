@@ -21,7 +21,7 @@ const Player = () => {
     }
 
     return (
-      <div className="h-full max-h-screen  w-full flex justify-center   items-start pt-[8vh] md:justify-start  md:items-center  2xl:items-start 2xl:pt-[13vh] md:pl-28 2xl:pl-52">
+      <div className="h-full max-h-screen  w-full flex justify-center   items-start pt-[4vh] md:justify-start  md:items-center  2xl:items-start 2xl:pt-[13vh] md:pl-28 2xl:pl-52">
         <audio  ref={audioRef} src={currentSong.url} preload="auto">
         </audio>
         <div className="flex flex-col text-white p-4 rounded-lg w-[280px] 2xl:w-[325px]">

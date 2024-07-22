@@ -15,7 +15,7 @@ const LeftSection = (props) => {
                 <img src={isSidebarOpen ?CrossIcon :PlaylistIcon} alt="Playlist Logo" className="w-8 rounded-full p-1" />
             </div>
             <div>
-                <img src={SpotifyLogo} alt="Spotify Logo" className="w-24 2xl:w-34" />
+                <img src={SpotifyLogo} alt="Spotify Logo" className="w-32 md:w-24 2xl:w-34" />
             </div>
             <div>
                 <img src={ProfileIcon} alt="User Logo" className="w-10  md:w-12 rounded-full" />
