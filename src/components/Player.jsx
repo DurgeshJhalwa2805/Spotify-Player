@@ -40,7 +40,7 @@ const Player = () => {
                     <hr ref={seekBar} className="h-1  border-none bg-white rounded-full" />
                 </div>
                 <div className="audio-controller mt-4 flex justify-between items-center">
-                    <div className="rounded-full p-2  cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out">
+                    <div className="rounded-full p-2  cursor-pointer backdrop-blur-2xl  hover:brightness-200 transition-all duration-300 ease-in-out">
                         <img
                             src={optionIcon}
                             alt={"option"}
@@ -48,14 +48,14 @@ const Player = () => {
                         />
                     </div>
                     <div className="controls flex justify-between items-center space-x-3">
-                        <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out" onClick={() => previous()}>
+                        <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-200 transition-all duration-300 ease-in-out" onClick={() => previous()}>
                             <img
                                 src={prevSongIcon}
                                 alt={"previous song button"}
                                 className="h-4 w-4 2xl:h-5 2xl:w-5 rounded-full"
                             />
                         </div>
-                        <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out" onClick={() => playStatus ? pause() : play()}>
+                        <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-200 transition-all duration-300 ease-in-out" onClick={() => playStatus ? pause() : play()}>
                             {playStatus ?
                                 <img
                                     src={pauseIcon}
@@ -70,7 +70,7 @@ const Player = () => {
                                 />}
 
                         </div>
-                        <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out" onClick={() => { nextSong() }}>
+                        <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-200 transition-all duration-300 ease-in-out" onClick={() => { nextSong() }}>
                             <img
                                 src={nextSongIcon}
                                 alt={"next song button"}
@@ -78,7 +78,7 @@ const Player = () => {
                             />
                         </div>
                     </div>
-                    <div className="rounded-full p-2  cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out">
+                    <div className="rounded-full p-2  cursor-pointer backdrop-blur-2xl  hover:brightness-200 transition-all duration-300 ease-in-out">
                         <img
                             src={speakerIcon}
                             alt={"speaker button"}
