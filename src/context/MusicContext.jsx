@@ -19,8 +19,9 @@ const MusicProvider = ({ children })=>{
     const [currentSong, setCurrentSong] = useState(null);
     const [playStatus,setPlayStatus] = useState(false);
     const [themeColors, setThemeColors] = useState({
-        backgroundGradient: '#1f1f1f',
+        backgroundGradient: 'linear-gradient(180deg, #331E00 0%, #000000 100%)',
         textBase: '#fff',
+        themeAccent:"#331E00"
       });
     const [time,setTime] = useState({
         currentTime:{
@@ -114,9 +115,16 @@ const MusicProvider = ({ children })=>{
         audioRef.current.currentTime = ((event.nativeEvent.offsetX / seekBg.current.offsetWidth) * audioRef.current.duration)
     }
 
+    const handleGradientUpdate = (gradient)=>{
+        let temp = {...themeColors}
+        temp.backgroundGradient =  `linear-gradient(180deg, ${gradient} 0%, #000000 100%)`
+        temp.themeAccent=gradient
+        setThemeColors({...temp})
+    }
+
 
     return(
-        <MusicContext.Provider value={{displayList,currentSong, setCurrentSong,loading,error,audioRef,seekBg,seekBar,time,setTime,play,pause ,playStatus,previous,nextSong,seekSong,topTrackActive,toggleLists}}>
+        <MusicContext.Provider value={{displayList,currentSong, setCurrentSong,loading,error,audioRef,seekBg,seekBar,time,setTime,play,pause ,playStatus,previous,nextSong,seekSong,topTrackActive,toggleLists,themeColors,handleGradientUpdate}}>
             {children}
         </MusicContext.Provider>
     )
