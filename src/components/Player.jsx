@@ -21,19 +21,21 @@ const Player = () => {
     }
 
     return (
-      <div className="h-full w-full flex justify-start items-center pl-28">
+      <div className="h-full w-full flex justify-center  md:justify-start  items-center 2xl:items-start 2xl:mt-[12%] md:pl-28 2xl:pl-52">
         <audio  ref={audioRef} src={currentSong.url} preload="auto">
         </audio>
-        <div className="flex flex-col text-white p-4 rounded-lg w-[280px]">
+        <div className="flex flex-col text-white p-4 rounded-lg w-[280px] 2xl:w-[325px]">
         <div className="text-left mb-4">
-            <p className="text-xl font-semibold">{currentSong.name}</p>
-            <p className="text-gray-400 text-xs">{currentSong.artist}</p>
+            <p className="text-xl 2xl:text-2xl font-semibold">{currentSong.name}</p>
+            <p className="opacity-60 text-xs 2xl:text-sm">{currentSong.artist}</p>
         </div>
-          <img
-            src={`https://cms.samespace.com/assets/${currentSong.cover}`}
-            alt={currentSong.name}
-            className=" h-[250px] w-full rounded-md mb-4"
-          />
+          <div className="vignette-container h-[250px] 2xl:h-[300px] w-full mb-4 rounded-md overflow-hidden">
+            <img
+              src={`https://cms.samespace.com/assets/${currentSong.cover}`}
+              alt={currentSong.name}
+              className="h-full w-full object-cover"
+            />
+      </div>
           <div ref={seekBg} className="w-[100%] bg-gray-700 rounded-full cursor-pointer mt-3" onClick={seekSong}>
             <hr ref={seekBar} className="h-1  border-none bg-white rounded-full"/>
           </div>
@@ -42,7 +44,7 @@ const Player = () => {
                     <img
                         src={optionIcon}
                         alt={"option"}
-                        className="h-4 w-4 rounded-full"
+                        className="h-4 w-4 2xl:h-5 2xl:w-5 rounded-full"
                     />
                 </div>
                 <div className="controls flex justify-between items-center space-x-3">
@@ -50,7 +52,7 @@ const Player = () => {
                         <img
                             src={prevSongIcon}
                             alt={"previous song button"}
-                            className="h-4 w-4 rounded-full"
+                            className="h-4 w-4 2xl:h-5 2xl:w-5 rounded-full"
                         />
                     </div>
                     <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out" onClick={()=>playStatus?pause():play()}>
@@ -58,21 +60,21 @@ const Player = () => {
                             <img
                             src={pauseIcon}
                             alt={"pause"}
-                            className="h-8 w-8 rounded-full"
+                            className="h-8 w-8 2xl:h-10 2xl:w-10 rounded-full shadow-lg border-1 border-gray-900"
                         />
                           
                        : <img
                             src={playIcon}
                             alt={"play"}
-                            className="h-8 w-8 rounded-full"
+                            className="h-8 w-8 2xl:h-10 2xl:w-10 rounded-full shadow-lg border-1 border-gray-900"
                         />}
                         
                     </div>
-                    <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out" onClick={()=>nextSong()}>
+                    <div className="cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out" onClick={()=>{nextSong()}}>
                          <img
                             src={nextSongIcon}
                             alt={"next song button"}
-                            className="h-4 w-4 rounded-full"
+                            className="h-4 w-4 2xl:h-5 2xl:w-5 rounded-full"
                         />
                     </div>
                 </div>
@@ -80,7 +82,7 @@ const Player = () => {
                     <img
                     src={speakerIcon}
                     alt={"speaker button"}
-                    className="h-4 w-4 rounded-full"
+                    className="h-4 w-4 2xl:h-5 2xl:w-5 rounded-full"
                     />
                 </div>
                 

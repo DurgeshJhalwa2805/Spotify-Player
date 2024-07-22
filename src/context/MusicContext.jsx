@@ -34,6 +34,9 @@ const MusicProvider = ({ children })=>{
         }
     })
 
+   
+
+
     useEffect(()=>{
         const fetchSongs = async () => {
             try {
@@ -42,10 +45,17 @@ const MusicProvider = ({ children })=>{
                 throw new Error('Network response was not ok');
               }
               const data = await response.json();
-              setSongs(data?.data);
-              setDisplayList(data?.data);
-              setTopTracks(data.data.filter((song)=>song.top_track))
-              setCurrentSong(data?.data[0])
+              let temp = data?.data
+              let songs = temp.map((item)=>{
+                return ({
+                    ...item,
+                    duration:handleRandomDuration()
+                })
+              })
+              setSongs(songs);
+              setDisplayList(songs);
+              setTopTracks(songs.filter((song)=>song.top_track))
+              setCurrentSong(songs[0])
             } catch (error) {
               setError(error.message);
             } finally {
@@ -85,8 +95,28 @@ const MusicProvider = ({ children })=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[topTrackActive])
 
+    const handleRandomDuration = ()=>{
+        const randomNumber = (Math.random() * (5.6 - 3) + 3).toFixed(2);
+       
+        const minutes = Math.floor(randomNumber);
+        const seconds = Math.round((randomNumber - minutes) * 60);
+        
+        const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+        return `${minutes}:${formattedSeconds}`;
+    }
+
+
     const toggleLists = ()=>{
         setTopTrackActive(!topTrackActive)
+    }
+
+    const handleReset = ()=>{
+        if(topTrackActive){
+            setDisplayList(topTracks)
+        }else{
+            setDisplayList(songs)
+        }
     }
 
     const play = async ()=>{
@@ -101,12 +131,19 @@ const MusicProvider = ({ children })=>{
 
     const previous =async ()=>{
         const index = displayList.findIndex(obj => obj.id === currentSong.id);
+        if(songs[index - 1]?.accent){
+            handleGradientUpdate(songs[index - 1].accent)
+        } 
         await setCurrentSong(songs[index - 1])
         play()
+        
     }
 
     const nextSong =async ()=>{
         const index = displayList.findIndex(obj => obj.id === currentSong.id);
+        if(songs[index==songs.length-1 ?0: index+1]?.accent){
+            handleGradientUpdate(songs[index==songs.length-1 ?0: index+1].accent)
+        } 
         await setCurrentSong(songs[index==songs.length-1 ?0: index+1])
         play()
     }
@@ -124,7 +161,7 @@ const MusicProvider = ({ children })=>{
 
 
     return(
-        <MusicContext.Provider value={{displayList,currentSong, setCurrentSong,loading,error,audioRef,seekBg,seekBar,time,setTime,play,pause ,playStatus,previous,nextSong,seekSong,topTrackActive,toggleLists,themeColors,handleGradientUpdate}}>
+        <MusicContext.Provider value={{displayList,setDisplayList,currentSong, setCurrentSong,loading,error,audioRef,seekBg,seekBar,time,setTime,play,pause ,playStatus,previous,nextSong,seekSong,topTrackActive,toggleLists,themeColors,handleGradientUpdate,handleReset}}>
             {children}
         </MusicContext.Provider>
     )
