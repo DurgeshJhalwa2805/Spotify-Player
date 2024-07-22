@@ -40,7 +40,7 @@ const Player = () => {
                     <hr ref={seekBar} className="h-1  border-none bg-white rounded-full" />
                 </div>
                 <div className="audio-controller mt-4 flex justify-between items-center">
-                    <div className="rounded-full p-2 bg-[#2d2009] cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out">
+                    <div className="rounded-full p-2  cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out">
                         <img
                             src={optionIcon}
                             alt={"option"}
@@ -78,7 +78,7 @@ const Player = () => {
                             />
                         </div>
                     </div>
-                    <div className="rounded-full p-2 bg-[#2d2009] cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out">
+                    <div className="rounded-full p-2  cursor-pointer backdrop-blur-2xl  hover:brightness-150 transition-all duration-300 ease-in-out">
                         <img
                             src={speakerIcon}
                             alt={"speaker button"}
