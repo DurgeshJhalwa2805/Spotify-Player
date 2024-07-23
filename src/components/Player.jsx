@@ -18,10 +18,10 @@ const Player = () => {
             </audio>
             <div className="flex flex-col text-white p-4 rounded-lg  min-w-[280px] w-[90%] md:w-[320px] 2xl:w-[325px]">
                 <div className="text-left mb-4">
-                    <p className="text-xl 2xl:text-2xl font-semibold">{currentSong.name}</p>
-                    <p className="opacity-60 text-xs 2xl:text-sm">{currentSong.artist}</p>
+                    <p className="text-2xl md:text-xl 2xl:text-2xl font-semibold">{currentSong.name}</p>
+                    <p className="opacity-60 text-sm md:text-xs 2xl:text-sm">{currentSong.artist}</p>
                 </div>
-                <div className="vignette-container h-[250px]  2xl:h-[300px] w-full mb-4 rounded-md overflow-hidden">
+                <div className="vignette-container h-[300px] md:h-[250px]  2xl:h-[300px] w-full mb-4 rounded-md overflow-hidden">
                    {!loading? <img
                         src={`https://cms.samespace.com/assets/${currentSong.cover}`}
                         alt={currentSong.name}
