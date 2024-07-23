@@ -2,6 +2,7 @@
 // import searchIcon from "../assets/icons/magnifierIcon.png";
 import useMusic from "../customHooks/useMusic";
 import SearchInput from "./SearchInput";
+import SkeletonLoaders from "./SkeletonLoaders";
 
 const SongList = ({isSidebarOpen}) => {
     
@@ -49,54 +50,65 @@ const SongList = ({isSidebarOpen}) => {
           Top Tracks
         </h2>
       </div>
-      {/* <div className="flex items-center w-full p-2 mb-4  backdrop-blur-2xl brightness-125 text-white rounded">
-        <input
-          type="text"
-          placeholder="Search Song, Artist"
-          className="flex-grow bg-transparent outline-none px-3  placeholder:text-sm"
-        />
-        <img
-          src={searchIcon}
-          alt="User Logo"
-          className="w-4 h-4 bg-transparent"
-        />
-      </div> */}
       <SearchInput />
       <ul
         className="flex-grow overflow-x-hidden overflow-y-auto "
-        style={{ maxHeight:isSidebarOpen? "calc(100vh - 200px)":"calc(100vh - 150px)" }}
+        style={{
+          maxHeight: isSidebarOpen
+            ? "calc(100vh - 200px)"
+            : "calc(100vh - 150px)",
+        }}
       >
-        {displayList &&
-          displayList.length > 0 ?
-          displayList.map((song) => (
-            <li
-              key={song.id}
-              className={`flex justify-between items-center  text-sm p-2 cursor-pointer ${
-                currentSong.id == song.id &&
-                " backdrop-blur-2xl brightness-150 "
-              } hover: hover:backdrop-blur-2xl hover:brightness-150 rounded transition-all duration-100 ease-linear `}
-              onClick={() => handleChangeSong(song)}
-            >
-              <div className="flex items-center">
-                <img
-                  src={`https://cms.samespace.com/assets/${song.cover}`}
-                  alt={song.title}
-                  className={`w-10 h-10 2xl:w-12 2xl:h-12 mr-3 2xl:mr-4 rounded-full ${
-                    currentSong.id == song.id &&
-                    playStatus &&
-                    "animate-slow-spin"
-                  }`}
-                />
-                <div className="pl-1">
-                  <p className="2xl:text-lg">{song.name}</p>
-                  <p className="text-xs 2xl:text-sm opacity-60">{song.artist}</p>
+        {!loading ? (
+          displayList && displayList.length > 0 ? (
+            displayList.map((song) => (
+              <li
+                key={song.id}
+                className={`flex justify-between items-center  text-sm p-2 cursor-pointer ${
+                  currentSong.id == song.id &&
+                  " backdrop-blur-2xl brightness-150 "
+                } hover: hover:backdrop-blur-2xl hover:brightness-150 rounded transition-all duration-100 ease-linear `}
+                onClick={() => handleChangeSong(song)}
+              >
+                <div className="flex items-center">
+                  <img
+                    src={`https://cms.samespace.com/assets/${song.cover}`}
+                    alt={song.title}
+                    className={`w-10 h-10 2xl:w-12 2xl:h-12 mr-3 2xl:mr-4 rounded-full ${
+                      currentSong.id == song.id &&
+                      playStatus &&
+                      "animate-slow-spin"
+                    }`}
+                  />
+                  <div className="pl-1">
+                    <p className="2xl:text-lg">{song.name}</p>
+                    <p className="text-xs 2xl:text-sm opacity-60">
+                      {song.artist}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <p className="2xl:text-md">{song?.duration}</p>
-            </li>
-          )) : <div>
-            <p className="text-center  mt-2 opacity-75">Oops! No matches. Search again?</p>
-            </div>}
+                <p className="2xl:text-md">{song?.duration}</p>
+              </li>
+            ))
+          ) : (
+            <div>
+              <p className="text-center  mt-2 opacity-75">
+                Oops! No matches. Search again?
+              </p>
+            </div>
+          )
+        ) : (
+          <div>
+            {/* skeleton loader */}
+            {Array(5)
+              .fill(null)
+              .map((_, index) => (
+                <div key={index}>
+              <SkeletonLoaders type={"card"} />
+                </div>
+              ))}
+          </div>
+        )}
       </ul>
     </div>
   );

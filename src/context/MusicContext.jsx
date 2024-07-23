@@ -159,9 +159,12 @@ const MusicProvider = ({ children })=>{
         setThemeColors({...temp})
     }
 
+    const contextValues = {
+        displayList,setDisplayList,currentSong, setCurrentSong,loading,error,audioRef,seekBg,seekBar,time,setTime,play,pause ,playStatus,previous,nextSong,seekSong,topTrackActive,toggleLists,themeColors,handleGradientUpdate,handleReset
+    }
 
     return(
-        <MusicContext.Provider value={{displayList,setDisplayList,currentSong, setCurrentSong,loading,error,audioRef,seekBg,seekBar,time,setTime,play,pause ,playStatus,previous,nextSong,seekSong,topTrackActive,toggleLists,themeColors,handleGradientUpdate,handleReset}}>
+        <MusicContext.Provider value={{...contextValues}}>
             {children}
         </MusicContext.Provider>
     )
