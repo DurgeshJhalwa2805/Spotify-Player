@@ -118,7 +118,7 @@ const MusicProvider = ({ children })=>{
             setDisplayList(songs)
         }
     }
-
+    // song control functions
     const play = async ()=>{
         await audioRef.current.play()
         setPlayStatus(true)

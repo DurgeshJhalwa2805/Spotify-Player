@@ -1,10 +1,9 @@
+import { useState } from 'react'
 import LeftSection from './components/LeftSection'
 import Player from './components/Player'
 import SongList from './components/SongList'
 import "./App.css"
-// import useMusic from './customHooks/useMusic'
 import useApplyThemeColors from './customHooks/useApplyThemeColors'
-import { useState } from 'react'
 
 const App = () => {
   useApplyThemeColors();
@@ -14,7 +13,6 @@ const App = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  console.log(isSidebarOpen, "isSidebarOpen")
 
   return (
     <div className='h-screen w-screen custom-gradient  text-white flex flex-col md:flex-row'>
