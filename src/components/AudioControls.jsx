@@ -33,7 +33,7 @@ const AudioControls = () => {
           <img
             src={optionIcon}
             alt={"option"}
-            className="h-5 w-5 md:h-4 md:w-4 2xl:h-5 2xl:w-5 rounded-full"
+            className="h-8 w-8 md:h-4 md:w-4 2xl:h-5 2xl:w-5 rounded-full"
           />
         </div>
         <div className="controls flex justify-between items-center space-x-3">
@@ -44,7 +44,7 @@ const AudioControls = () => {
             <img
               src={prevSongIcon}
               alt={"previous song button"}
-              className="h-5 w-5 md:h-4 md:w-4 2xl:h-5 2xl:w-5 rounded-full"
+              className="h-8 w-8 md:h-4 md:w-4 2xl:h-5 2xl:w-5 rounded-full"
             />
           </div>
           <div
@@ -55,13 +55,13 @@ const AudioControls = () => {
               <img
                 src={pauseIcon}
                 alt={"pause"}
-                className="h-10 w-10 md:h-8 md:w-8 2xl:h-10 2xl:w-10 rounded-full shadow-lg border-1 border-gray-900"
+                className="h-14 w-14 md:h-8 md:w-8 2xl:h-10 2xl:w-10 rounded-full shadow-lg border-1 border-gray-900"
               />
             ) : (
               <img
                 src={playIcon}
                 alt={"play"}
-                className="h-10 w-10 md:h-8 md:w-8 2xl:h-10 2xl:w-10 rounded-full shadow-lg border-1 border-gray-900"
+                className="h-14 w-14 md:h-8 md:w-8 2xl:h-10 2xl:w-10 rounded-full shadow-lg border-1 border-gray-900"
               />
             )}
           </div>
@@ -74,7 +74,7 @@ const AudioControls = () => {
             <img
               src={nextSongIcon}
               alt={"next song button"}
-              className="h-5 w-5 md:h-4 md:w-4 2xl:h-5 2xl:w-5 rounded-full"
+              className="h-8 w-8 md:h-4 md:w-4 2xl:h-5 2xl:w-5 rounded-full"
             />
           </div>
         </div>
@@ -82,7 +82,7 @@ const AudioControls = () => {
           <img
             src={speakerIcon}
             alt={"speaker button"}
-            className="h-5 w-5 md:h-4 md:w-4 2xl:h-5 2xl:w-5 rounded-full"
+            className="h-8 w-8 md:h-4 md:w-4 2xl:h-5 2xl:w-5 rounded-full"
           />
         </div>
       </div>
