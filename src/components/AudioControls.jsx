@@ -22,10 +22,10 @@ const AudioControls = () => {
     {/* seekbar */}
       <div
         ref={seekBg}
-        className="w-[100%] audio-controller bg-gray-700 rounded-full cursor-pointer mt-3 "
+        className="w-[100%] audio-controller bg-gray-700 rounded-full cursor-pointer mt-3 mb-3 md:mb-2"
         onClick={seekSong}
       >
-        <hr ref={seekBar} className="h-1  border-none bg-white rounded-full " />
+        <hr ref={seekBar} className="h-1  border-none bg-white rounded-full" />
         
       </div>
       {/* play controls */}
